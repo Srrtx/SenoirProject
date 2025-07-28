@@ -1,8 +1,8 @@
-# Ignore data split files
-.data_split
+# Ignore data_split folder
+data_split/
 
 # Ignore dataset folder
-.Dataset_BUSI_with_GT
+Dataset_BUSI_with_GT/
 
 # Ignore oversampling files
-.oversampling
+oversampling/

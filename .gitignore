@@ -8,8 +8,7 @@ Dataset_BUSI_with_GT/
 oversampling/
 
 # Ignore model weight files
-*.h5
-*.pth
+*.h5   
 *.pt
 *.ckpt
 *.pb

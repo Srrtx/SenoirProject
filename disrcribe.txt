@@ -17,3 +17,24 @@ Transfer Learning คือ เทคนิคที่ช่วยลดเว�
 Why transfer learning model
  กรณีที่หนึ่ง: เราไม่มีเครื่องเอาไว้เทรนโมเดล
  กรณีที่สอง: เรามีข้อมูลน้อย
+
+
+ Data split 
+ 70:15:15
+Class: malignant
+Total files: 210
+Training files: 147
+Validation files: 31
+Test files: 32
+
+Class: benign
+Total files: 438
+Training files: 306
+Validation files: 66
+Test files: 66
+
+Class: normal
+Total files: 133
+Training files: 93
+Validation files: 20
+Test files: 20

@@ -6,48 +6,56 @@ This project aims to classify breast cancer images using deep learning technique
 
 - **data_split/**: Contains subdirectories for training, validation, and testing datasets.
 - **Dataset_BUSI_with_GT/**: Contains the original dataset used for training and testing the model.
-- **src/**: Contains the source code for the project.
-  - **data_augmentation.py**: Implements data augmentation techniques to enhance the training dataset.
-  - **oversampling.py**: Implements oversampling techniques specifically for the malignant class to balance the dataset.
-  - **model.py**: Defines the model architecture for the breast cancer classification task.
-  - **train.py**: Contains the training loop for the model.
-  - **evaluate.py**: Responsible for evaluating the trained model on validation and test datasets.
-  - **utils.py**: Contains utility functions used across the other modules.
-- **new.ipynb**: Jupyter notebook for experimentation and interactive development.
+- **mymodel.ipynb**: Jupyter notebook for experimentation and interactive development.
 - **requirements.txt**: Lists the dependencies required for the project.
 
-## Setup Instructions
+## Model Training Configuration and Techniques
+- **Data Split** : Training set 70% ,Validation set: 15% ,and Test set: 15%
+- **Basic Parameters**
+  - Batch size: 32
+  - Number of epochs: 80
+  - Image size: 224 x 224
+  - Learning rate: 0.001
+  - Number of classes: 3 (benign, malignant, normal)
 
-1. Clone the repository:
-   ```
-   git clone <repository-url>
-   cd breast-cancer-classification
-   ```
+- **Model Architecture**
+  Base model: ResNet50 (pretrained on ImagaNet)
 
-2. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+- **Class Balancing Techniques**
+  - Class weights computed using 'compute_class_weight('balanced')'
+  - Weighted CrossEntropyLoss
+  - WeightedRandomSampler for dynamic sampling
 
-3. Prepare the dataset:
-   - Place the BUSI dataset in the `Dataset_BUSI_with_GT/` directory.
-   - Run the data splitting script to organize the dataset into training, validation, and test sets.
+- **Data Augmentation**
+  - RandomHorizontalFlip
+  - Resize to 224x224
+  - Normalization (ImageNet statistics): 
+      - mean=[0.485, 0.456, 0.406] 
+      - std=[0.229, 0.224, 0.225]
 
-## Usage
+- **Optimization**
+  - Optimizer: AdamW
+    - Weight decay: 0.01
+  - Learning rate scheduler: ReduceLROnPlateau
+    - Mode: min (monitoring validation loss)
+    - Factor: 0.5
+    - Patience: 5
+    - Minimum learning rate: 1e-5
 
-- To train the model, run the `train.py` script:
-  ```
-  python src/train.py
-  ```
+- **Early Stopping**
+  - Patience: 10 epochs
+  - Monitoring: validation loss
 
-- To evaluate the model, run the `evaluate.py` script:
-  ```
-  python src/evaluate.py
-  ```
+- **Best Model Selection**
+  - Saves model with best validation accuracy
+  - Implements model checkpointing
 
-- For data augmentation, modify the `data_augmentation.py` file as needed.
-
-- For oversampling the malignant class, implement your logic in `oversampling.py`.
+- **Performance Metrics**
+  - Accuracy
+  - Precision
+  - Recall
+  - F1-score
+  - Confusion Matrix
 
 ## Notes
 

@@ -14,3 +14,4 @@ oversampling/
 *.pb
 *.zip
 
+.vscode/

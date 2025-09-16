@@ -178,7 +178,8 @@ graph TD
    - Analyzed class distribution and addressed imbalance
 
 2. **Data Loading & Splitting**
-   - Split ratio: 70% train, 15% validation, 15% test
+   - Split ratio: 70% train, 15% validation, 15% test "common practical split"
+   %ถ้าต้องการอ้างอิง: สามารถใช้งานที่ใกล้เคียง เช่น “งานที่ใช้ 70/30” แล้วอธิบายว่าแบ่ง validation แยกออกมาอีก 15% เพื่อการปรับจูนโมเดล — โดยยอมรับว่ามีการดัดแปลง
    - Implemented data augmentation
    - Used dynamic sampling for class balance
 
